@@ -1,9 +1,15 @@
+import { Database } from "@/database.types"
 import SearchBar from "@/components/SearchBar"
 import { icons } from "@/constants/icons"
 import { images } from "@/constants/images"
-import { View, Image, ScrollView } from "react-native"
+import { useFetch } from "@/hooks/useFetch"
+import { fetchMoviesDefault } from "@/utils/fetchMovies"
+import { View, Image, ScrollView, FlatList, Text } from "react-native"
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"
 
 const Index = () => {
+    const { response, loading, reset, fetchData } = useFetch(fetchMoviesDefault, true)
+    console.log("---------thios is response", response?.data)
     return (
         <View className="flex-1 bg-primary">
             <Image source={images.bg} className="absolute w-full z-0" />
@@ -18,6 +24,15 @@ const Index = () => {
             >
                 <Image source={icons.logo} className="w-12 h-10 mt-20 mb-5 mx-auto" />
                 <SearchBar />
+
+                <SafeAreaProvider>
+                    <SafeAreaView>
+                        <FlatList
+                            data={response?.data}
+                            renderItem={({ item }) => <View> <Text className="text-white">{item.title}</Text></View>}
+                        />
+                    </SafeAreaView>
+                </SafeAreaProvider>
             </ScrollView>
         </View>
     )

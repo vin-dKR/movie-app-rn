@@ -1,6 +1,14 @@
+import { Database, Tables } from "@/database.types"
 import { supabaseClient } from "./db/supabaseClient"
+import { QueryResult, QueryData, QueryError } from '@supabase/supabase-js'
 
-export const fetchMoviesDefault = async () => {
+
+interface FetchMovies {
+    data: Tables<"movies">[] | null
+    error: Error | null
+}
+
+export const fetchMoviesDefault = async (): Promise<FetchMovies> => {
     const { data, error } = await supabaseClient
         .from("movies")
         .select("*")

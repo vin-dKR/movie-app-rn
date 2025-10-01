@@ -11,7 +11,7 @@ const fetchMovies = async () => {
         .from('movies')
         .select('*')
         .order("popularity", { ascending: false })
-        .limit(20)
+        .limit(1)
 
     if (error) {
         console.error('Error fetching movies:', error);
