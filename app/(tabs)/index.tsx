@@ -4,7 +4,7 @@ import { icons } from "@/constants/icons"
 import { images } from "@/constants/images"
 import { useFetch } from "@/hooks/useFetch"
 import { fetchMoviesDefault } from "@/utils/fetchMovies"
-import { View, Image, ScrollView, FlatList, Text } from "react-native"
+import { View, Image, ScrollView, FlatList, Text, ActivityIndicator } from "react-native"
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"
 
 const Index = () => {
@@ -26,11 +26,23 @@ const Index = () => {
                 <SearchBar />
 
                 <SafeAreaProvider>
-                    <SafeAreaView>
-                        <FlatList
-                            data={response?.data}
-                            renderItem={({ item }) => <View> <Text className="text-white">{item.title}</Text></View>}
-                        />
+                    <SafeAreaView className="flex-1">
+                        {loading && (
+                            <View className="flex-1 items-center justify-center">
+                                <ActivityIndicator />
+                            </View>
+                        )}
+
+                        {response && (
+                            <FlatList
+                                data={response?.data}
+                                renderItem={({ item }) => <View>
+
+
+                                    <Text className="text-white">{item.title}</Text>
+                                </View>}
+                            />
+                        )}
                     </SafeAreaView>
                 </SafeAreaProvider>
             </ScrollView>
