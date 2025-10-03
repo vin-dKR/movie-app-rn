@@ -1,4 +1,3 @@
-import { Database } from "@/database.types"
 import SearchBar from "@/components/SearchBar"
 import { icons } from "@/constants/icons"
 import { images } from "@/constants/images"
@@ -6,6 +5,7 @@ import { useFetch } from "@/hooks/useFetch"
 import { fetchMoviesDefault } from "@/utils/fetchMovies"
 import { View, Image, ScrollView, FlatList, Text, ActivityIndicator } from "react-native"
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"
+import MovieCard from "@/components/MovieCard"
 
 const Index = () => {
     const { response, loading, reset, fetchData } = useFetch(fetchMoviesDefault, true)
@@ -36,11 +36,13 @@ const Index = () => {
                         {response && (
                             <FlatList
                                 data={response?.data}
-                                renderItem={({ item }) => <View>
-
-
-                                    <Text className="text-white">{item.title}</Text>
+                                renderItem={({ item }) => <View className="mr-4">
+                                    <MovieCard {...item} />
                                 </View>}
+                                horizontal
+                                showsHorizontalScrollIndicator={false}
+                                contentContainerStyle={{ paddingHorizontal: 16 }}
+                                keyExtractor={(item) => item.id.toString()}
                             />
                         )}
                     </SafeAreaView>
