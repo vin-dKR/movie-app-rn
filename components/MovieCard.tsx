@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity } from "react-native"
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native"
 import { Tables } from "@/database.types"
 import { Ionicons } from "@expo/vector-icons"
 
@@ -32,6 +32,7 @@ const MovieCard = ({
             <View className="relative">
                 <Image
                     source={{ uri: `https://image.tmdb.org/t/p/w500${poster_path}` }}
+                    style={styles.container}
                     className="w-full h-60 rounded-lg"
                     resizeMode="cover"
                 />
@@ -113,5 +114,17 @@ const MovieCard = ({
         </TouchableOpacity>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    image: {
+        width: 200,
+        height: 200,
+    },
+});
 
 export default MovieCard

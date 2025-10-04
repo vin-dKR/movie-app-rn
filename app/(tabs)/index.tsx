@@ -34,15 +34,14 @@ const Index = () => {
 
                         {response && (
                             <FlatList
-                                className="bg-white"
                                 data={response?.data}
                                 renderItem={
-                                    ({ item }) => <View className="">
+                                    ({ item }) => <View className="mt-4">
                                         <MovieCard {...item} />
                                     </View>}
                                 horizontal
                                 showsHorizontalScrollIndicator={false}
-                                contentContainerStyle={{ paddingHorizontal: 16 }}
+                                contentContainerStyle={{ paddingHorizontal: 4 }}
                                 keyExtractor={(item) => item.id.toString()}
                             />
                         )}
