@@ -9,7 +9,6 @@ import MovieCard from "@/components/MovieCard"
 
 const Index = () => {
     const { response, loading, reset, fetchData } = useFetch(fetchMoviesDefault, true)
-    console.log("---------thios is response", response?.data)
     return (
         <View className="flex-1 bg-primary">
             <Image source={images.bg} className="absolute w-full z-0" />
