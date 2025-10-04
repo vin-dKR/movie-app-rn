@@ -19,7 +19,7 @@ const Index = () => {
                     minHeight: "100%",
                     paddingBottom: 10
                 }}
-                className="flex-1 px-5"
+                className="flex-1 px-0"
             >
                 <Image source={icons.logo} className="w-12 h-10 mt-20 mb-5 mx-auto" />
                 <SearchBar />
@@ -34,9 +34,10 @@ const Index = () => {
 
                         {response && (
                             <FlatList
+                                className="bg-white"
                                 data={response?.data}
                                 renderItem={
-                                    ({ item }) => <View className="mr-4">
+                                    ({ item }) => <View className="">
                                         <MovieCard {...item} />
                                     </View>}
                                 horizontal

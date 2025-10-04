@@ -38,7 +38,7 @@ const MovieCard = ({
 
                 {/* Prime badge */}
                 <View className="absolute top-2 left-2 bg-blue-600 px-2 py-1 rounded">
-                    <Text className="text-white dark:text-white text-xs font-bold">PRIME</Text>
+                    <Text className="text-white text-xs font-bold">PRIME</Text>
                 </View>
 
                 {/* HD badge */}
